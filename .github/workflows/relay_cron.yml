@@ -2,7 +2,8 @@ name: 📡 Market News Relay (24/7 Unlimited)
 
 on:
   schedule:
-    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 * * * *'
+    # Run every 30 min (avoids GitHub dropping */5 crons) & poll every 60s for 27 min continuously
+    - cron: '7,37 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -22,7 +23,7 @@ jobs:
           python-version: '3.12'
           cache: 'pip'
       - run: pip install --quiet telethon requests pillow
-      - name: Run 60s Poll Loop Relay
+      - name: Run 27-Min Continuous 60s Poll Loop
         env:
           TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
           TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
@@ -32,7 +33,7 @@ jobs:
           DEST_CHAT_ID: ${{ secrets.DEST_CHAT_ID }}
           OFFICIAL_SENDERS: ${{ secrets.OFFICIAL_SENDERS }}
           FILTER_RULES_B64: ${{ secrets.FILTER_RULES_B64 }}
-        run: python -u almond_cave/telegram_relay/cron_relay.py --loop 4 --interval 60
+        run: python -u almond_cave/telegram_relay/cron_relay.py --loop 27 --interval 60
       - name: Save State
         run: |
           git config user.name "Market Worker Bot"
