@@ -2,7 +2,7 @@
 """
 almond_cave/scout_dispatcher.py
 --------------------------------
-Autonomous Dispatcher for Scout News & Technical Intelligence (Authentic Jang-Style):
+Autonomous Dispatcher for Scout News & Technical Intelligence (Authentic Structured Brief):
 
 1. Daily Market Wrap & Asset Movement (ส่งสรุปประจำวันเพียง 1 เวลาต่อวัน):
    - เวลา 08:00 น. (เวลาไทย): ตลาดหุ้นสหรัฐฯ ปิดรอบ Regular และ After-Hours ครบถ้วน 100%
@@ -282,7 +282,7 @@ def clean_html_text(raw_text: str) -> str:
 
 def translate_to_fluent_thai(text: str) -> str:
     """
-    Translates English financial news to fluent, natural Thai (Jang-Style),
+    Translates English financial news to fluent, natural Thai (Structured Brief),
     avoiding word-for-word machine translation mistakes.
     Uses dual-engine translation (Google Translate with MyMemory fallback).
     """
@@ -968,7 +968,7 @@ def generate_deep_fundamental_analysis(cat: str, ticker: Optional[str], title: s
 
 def format_jang_breaking_post(item: Dict[str, Any]) -> tuple[str, Optional[str], Optional[str]]:
     """
-    Formats a breaking news item into authentic 'Jang-Style' Telegram posts:
+    Formats a breaking news item into authentic 'Structured Brief' Telegram posts:
     1. Primary Message: Punchy headline, categorized or ticker header, timestamp, and source link.
     2. Comment Message: Deep Intelligence breakdown with numbered sections,
        divider ━━━━━━━━━━━━, 📌 สรุปประเด็นสำคัญ, and 📊 ภาพรวมและมุมมอง.
@@ -1038,7 +1038,7 @@ def format_jang_breaking_post(item: Dict[str, Any]) -> tuple[str, Optional[str],
         tags.append("#EARNINGS")
         tag_str = " ".join(tags)
 
-        # 1. Primary Headline Card — Jang-style: short punchy lead with quarter, beat/miss signal
+        # 1. Primary Headline Card — Structured brief: short punchy lead with quarter, beat/miss signal
         _headline_lead = (
             f"📊 <b>[{ticker}] รายได้ {_quarter_label} {_beat_signal} EPS ปรับปรุง (Adjusted EPS) {_beat_signal} {_verdict_th}</b>"
         )
@@ -1059,7 +1059,7 @@ def format_jang_breaking_post(item: Dict[str, Any]) -> tuple[str, Optional[str],
         primary_lines.append(f"🏷️ {tag_str}")
         primary_msg = "\n".join(primary_lines)
 
-        # 2. Deep Intelligence Thread (Reply Message) — 4-section Jang structure
+        # 2. Deep Intelligence Thread (Reply Message) — 4-section 4-section structure
         comment_lines = [
             f"📊 <b>{company} ({ticker}) — ผลประกอบการและแนวโน้มธุรกิจ {_quarter_label}</b>",
             f"ที่มา: {source}",
@@ -1290,7 +1290,7 @@ def build_daily_morning_brief() -> str:
 
 def build_significant_signals_radar(limit: int = 10) -> tuple[str, str, str]:
     """
-    Constructs the specialized Significant Technical Signals Briefing (Authentic Jang-Style):
+    Constructs the specialized Significant Technical Signals Briefing (Authentic Structured Brief):
     - Primary Card: S&P 500 candlestick chart with concise headline card (< 950 chars for sendPhoto caption)
     - Deep Comment Thread: Detailed 3-tier support/resistance table (Shallow, Medium, Deep Weekly),
       numbered takeaways 1-4, divider ━━━━━━━━━━━━, and concluding analysis ending with ครับ.
@@ -1303,7 +1303,7 @@ def build_significant_signals_radar(limit: int = 10) -> tuple[str, str, str]:
 
     timestamp_str = now_bkk.strftime("%d/%m/%Y | %H:%M น.")
 
-    # Sync recent dynamic mentions from channel 143 if user session is available
+    # Sync recent dynamic mentions from destination channel if user session is available
     try:
         from almond_cave.channel_tracker import sync_channel_mentions_from_telegram
         sync_channel_mentions_from_telegram(limit=30)
@@ -1314,7 +1314,7 @@ def build_significant_signals_radar(limit: int = 10) -> tuple[str, str, str]:
     sig_items = scan_res.get("significant_items", [])
     macro = scan_res.get("macro", {})
 
-    # 1. Primary Headline Card (Jang Style: concise, under 900 chars for sendPhoto caption)
+    # 1. Primary Headline Card (Structured Brief: concise, under 900 chars for sendPhoto caption)
     primary_lines = [
         "📊 <b>ตลาดหุ้นสหรัฐฯ — สัญญาณเทคนิคอลและด่านราคาสำคัญ (Technical Radar)</b>",
         f"🕒 <b>[{timestamp_str}]</b>",
@@ -1378,7 +1378,7 @@ def build_significant_signals_radar(limit: int = 10) -> tuple[str, str, str]:
     primary_lines.append(tag_line)
     primary_msg = "\n".join(primary_lines)
 
-    # 2. Deep Comment Reply Thread (Authentic Jang-Style Structure, strictly <= 4,000 chars)
+    # 2. Deep Comment Reply Thread (Authentic Structured Brief Structure, strictly <= 4,000 chars)
     comment_lines = [
         "📊 <b>เจาะลึกด่านราคาสำคัญและแนวรับ 3 ระดับ (Deep Support & Resistance Analysis)</b>",
         "ที่มา: ข้อมูลการซื้อขายและแบบจำลองการคำนวณทางสถิติ\n"
@@ -1459,7 +1459,7 @@ def build_weekly_catalyst_calendar() -> tuple[str, str, str]:
     Constructs the Weekly Catalyst & Earnings Calendar (every Monday 08:00 AM Bangkok Time):
     - Macro Economic Data events for the week (CPI, PPI, Retail Sales, Fed Speeches, Jobs)
     - Key Corporate Earnings for Core Portfolio (11 stocks) and Mega-Caps
-    - Formatted in Authentic Jang Style with 3-tier structure
+    - Formatted in Authentic Structured Brief with 3-tier structure
     """
     if os.getenv("GITHUB_ACTIONS"):
         now_bkk = datetime.now(timezone.utc) + timedelta(hours=7)
@@ -1564,12 +1564,12 @@ def dispatch_scout_run(round_name: str = "auto") -> Dict[str, Any]:
     Autonomous Dispatcher:
     - Monday 08:00 AM: Sends Weekly Catalyst & Earnings Calendar
     - Daily 08:00 AM (07:45 - 08:35): Sends Daily Market Wrap & Asset Movement
-      Followed by the Significant Signals Technical Radar (Support & Resistance) to channel 143
-    - Pre-Market 20:30 - 21:30 BKK: Sends Pre-Market Support & Resistance Radar to channel 143
+      Followed by the Significant Signals Technical Radar (Support & Resistance) to destination channel
+    - Pre-Market 20:30 - 21:30 BKK: Sends Pre-Market Support & Resistance Radar to destination channel
     - At round_name == 'radar': Dispatches the Significant Signals Technical Radar
     - At round_name == 'weekly_calendar': Dispatches the Weekly Catalyst Calendar
     - At any other time (24/7): Scans live news from Tier-1 sources.
-      If fresh news found -> Dispatches unified Jang-Style Breaking Alert immediately!
+      If fresh news found -> Dispatches unified Structured Brief Breaking Alert immediately!
       If no fresh news -> Silent (100% No-Noise).
     """
     if round_name == "radar":
@@ -1627,8 +1627,8 @@ def dispatch_scout_run(round_name: str = "auto") -> Dict[str, Any]:
             photo_path_or_url=heatmap_url
         )
 
-        # Follow up by dispatching the full Significant Signals Radar (Support & Resistance) to channel 143!
-        logger.info("Dispatching Morning Significant Signals Technical Radar to Channel 143...")
+        # Follow up by dispatching the full Significant Signals Radar (Support & Resistance) to destination channel!
+        logger.info("Dispatching Morning Significant Signals Technical Radar to Destination Channel...")
         dispatch_significant_signals_radar(post_to_channel=True)
         history.append({
             "key": daily_wrap_key,
@@ -1710,7 +1710,7 @@ def dispatch_scout_run(round_name: str = "auto") -> Dict[str, Any]:
     def is_grade_a_catalyst(item: Dict[str, Any]) -> bool:
         """
         Evaluate if a catalyst qualifies as 'Grade A+ Major Market Mover'
-        worthy of being shared into the public/friends channel (ข่าวหุ้น 143).
+        worthy of being shared into the public/friends channel (destination channel).
         Criteria:
         1. Macro / Economic Data (CPI, NFP, GDP, PCE) or Fed rate decisions
         2. Core Portfolio stocks: Earnings, Guidance, Insider, Price Moves, Major Investors, Strategic/AI/Regulatory
@@ -1726,7 +1726,7 @@ def dispatch_scout_run(round_name: str = "auto") -> Dict[str, Any]:
         if cat in ["economic_data", "fed"]:
             return True
 
-        # 2. All Core Portfolio (11 core stocks) that already passed Tier-1 Gatekeeper go to Channel 143
+        # 2. All Core Portfolio (11 core stocks) that already passed Tier-1 Gatekeeper go to Destination Channel
         if any(t in ticker for t in CORE_PORTFOLIO_TICKERS):
             return True
 
@@ -1743,7 +1743,7 @@ def dispatch_scout_run(round_name: str = "auto") -> Dict[str, Any]:
             continue
         sent_tickers.add(t_key)
 
-        # 🛡️ Channel 143 Deduplication Gate: Check if already covered by Mr. Jang / Channel 143
+        # 🛡️ Destination Channel Deduplication Gate: Check if already covered by source feed / Destination Channel
         is_major = is_grade_a_catalyst(target_item)
         lookback = 24 if is_major else 18
         try:
@@ -1754,7 +1754,7 @@ def dispatch_scout_run(round_name: str = "auto") -> Dict[str, Any]:
                 hours_lookback=lookback
             )
             if is_covered:
-                logger.info(f"🛡️ [Channel 143 Dedup Skip] {cov_reason}")
+                logger.info(f"🛡️ [Destination Channel Dedup Skip] {cov_reason}")
                 history.append({
                     "key": target_item["key"],
                     "title": target_item["title"],
