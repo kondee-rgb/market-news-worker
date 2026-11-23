@@ -505,7 +505,7 @@ def get_all_radar_tickers() -> List[str]:
     Returns the comprehensive deduplicated list of tickers to track:
     1. Core Portfolio (11 tickers)
     2. Popular Radar (NVDA, TSLA, AAPL, MSFT, META, GOOGL, AMZN, PLTR, SOFI, IREN, ORCL, AMD, SPY, QQQ, BTC-USD)
-    3. Dynamic tickers discovered from channel ข่าวหุ้น 143 (Channel Tracker)
+    3. Dynamic tickers discovered from channel destination channel (Channel Tracker)
     4. Watchlist (23 tickers)
     """
     try:
