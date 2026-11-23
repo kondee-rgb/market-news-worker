@@ -1,2 +1,3 @@
-# market-news-worker
-Automated market news relay and technical scanner worker
+# Market News Worker
+
+Automated Telegram market news relay and technical scanner.
