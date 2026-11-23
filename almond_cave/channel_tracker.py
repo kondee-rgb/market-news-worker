@@ -1,5 +1,5 @@
 """
-Channel Mention Tracker for ข่าวหุ้น 143
+Channel Mention Tracker for destination channel
 Automatically monitors and extracts mentioned stock tickers from Telegram messages
 and dynamically adds them to the technical radar scanner.
 """
@@ -74,7 +74,7 @@ def extract_tickers_from_text(text: str) -> Set[str]:
     return found
 
 
-def record_channel_mentions(text: str, source: str = "ข่าวหุ้น 143") -> List[str]:
+def record_channel_mentions(text: str, source: str = "destination channel") -> List[str]:
     """
     Extract tickers from message text and record/increment mention counts.
     Returns list of newly discovered or updated tickers.
@@ -116,7 +116,7 @@ def get_all_dynamic_tickers() -> List[str]:
 
 def sync_channel_mentions_from_telegram(limit: int = 100) -> List[str]:
     """
-    Scan recent messages directly from ข่าวหุ้น 143 using Telethon user session (if available).
+    Scan recent messages directly from destination channel using Telethon user session (if available).
     """
     session_path = BASE_DIR / "telegram_relay" / "relay_user_session.session"
     if not session_path.exists():
@@ -145,7 +145,7 @@ def sync_channel_mentions_from_telegram(limit: int = 100) -> List[str]:
             all_new = []
             async for msg in client.iter_messages(dest_chat_id, limit=limit):
                 if msg.text:
-                    added = record_channel_mentions(msg.text, source="ข่าวหุ้น 143")
+                    added = record_channel_mentions(msg.text, source="destination channel")
                     all_new.extend(added)
 
             await client.disconnect()
@@ -173,7 +173,7 @@ CHANNEL_143_RECENT_FILE = BASE_DIR / "channel_143_recent.json"
 
 
 def record_channel_143_message(text: str, msg_id: int = None, date_iso: str = None) -> None:
-    """Store recent message from channel ข่าวหุ้น 143 for fast deduplication."""
+    """Store recent message from channel destination channel for fast deduplication."""
     if not text:
         return
     now_iso = date_iso or datetime.now().isoformat()
@@ -208,8 +208,8 @@ def is_news_already_covered_in_channel(
     hours_lookback: int = 18
 ) -> tuple[bool, str]:
     """
-    Check if a news topic or ticker catalyst has already been reported in channel ข่าวหุ้น 143
-    (especially relayed from Mr. Jang) within the specified lookback window (default 18 hours).
+    Check if a news topic or ticker catalyst has already been reported in channel destination channel
+    (especially relayed from source feed) within the specified lookback window (default 18 hours).
     Returns (is_covered, reason).
     """
     if not title:
@@ -259,14 +259,14 @@ def is_news_already_covered_in_channel(
                                 matched_words = title_words.intersection(set(re.findall(r'[A-Za-z0-9ก-๙]{3,}', m_lower)))
                                 if is_both_earnings or len(matched_words) >= 1:
                                     await client.disconnect()
-                                    return True, f"Ticker ${t_upper} covered in channel 143 {age_hours:.1f}h ago (Msg {m.id}): {m_txt[:50]}..."
+                                    return True, f"Ticker ${t_upper} covered in destination channel {age_hours:.1f}h ago (Msg {m.id}): {m_txt[:50]}..."
 
                         # Check Topic keyword overlap
                         matched_words = title_words.intersection(set(re.findall(r'[A-Za-z0-9ก-๙]{3,}', m_lower)))
                         meaningful_matches = [w for w in matched_words if w.upper() not in STOP_WORDS and len(w) >= 3]
                         if len(meaningful_matches) >= 2:
                             await client.disconnect()
-                            return True, f"Topic overlap {meaningful_matches} covered {age_hours:.1f}h ago in channel 143 (Msg {m.id}): {m_txt[:50]}..."
+                            return True, f"Topic overlap {meaningful_matches} covered {age_hours:.1f}h ago in destination channel (Msg {m.id}): {m_txt[:50]}..."
 
                     await client.disconnect()
                     return False, ""
