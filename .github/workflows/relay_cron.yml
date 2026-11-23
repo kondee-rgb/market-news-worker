@@ -2,7 +2,6 @@ name: 📡 Market News Relay (24/7 Unlimited)
 
 on:
   schedule:
-    # Runs every 5 min with 4x60s poll loop (~1 min latency 24/7, $0 on public repo)
     - cron: '2,7,12,17,22,27,32,37,42,47,52,57 * * * *'
   workflow_dispatch:
 
@@ -38,4 +37,8 @@ jobs:
           git config user.name "Market Worker Bot"
           git config user.email "worker@users.noreply.github.com"
           git add almond_cave/telegram_relay/relay_state.json almond_cave/dynamic_radar_tickers.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update state [skip ci]" && git push)
+          if ! git diff --quiet || ! git diff --staged --quiet; then
+            git commit -m "chore: update relay state [skip ci]"
+            git pull --rebase --autostash origin main || true
+            git push
+          fi
