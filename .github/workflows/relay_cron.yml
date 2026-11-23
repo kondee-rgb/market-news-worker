@@ -31,6 +31,7 @@ jobs:
           SOURCE_CHAT_ID: ${{ secrets.SOURCE_CHAT_ID }}
           DEST_CHAT_ID: ${{ secrets.DEST_CHAT_ID }}
           OFFICIAL_SENDERS: ${{ secrets.OFFICIAL_SENDERS }}
+          FILTER_RULES_B64: ${{ secrets.FILTER_RULES_B64 }}
         run: python -u almond_cave/telegram_relay/cron_relay.py --loop 4 --interval 60
       - name: Save State
         run: |
