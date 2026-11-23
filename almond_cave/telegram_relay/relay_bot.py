@@ -81,12 +81,17 @@ else:
 def extract_rich_text(rich_text_obj):
     if not rich_text_obj:
         return ""
+    if isinstance(rich_text_obj, str):
+        return rich_text_obj
+    cls_name = type(rich_text_obj).__name__
+    if cls_name in ("TextEmpty", "TextImage", "PageBlockDivider"):
+        return ""
     if hasattr(rich_text_obj, "text"):
         return extract_rich_text(rich_text_obj.text)
     if hasattr(rich_text_obj, "texts"):
         return "".join(extract_rich_text(t) for t in rich_text_obj.texts)
-    if isinstance(rich_text_obj, str):
-        return rich_text_obj
+    if hasattr(rich_text_obj, "SUBCLASS_OF_ID"):
+        return ""
     return str(rich_text_obj)
 
 
@@ -98,7 +103,8 @@ def extract_page_block(block):
         for i, item in enumerate(block.items, 1):
             num_str = getattr(item, "num", str(i))
             item_text = extract_rich_text(getattr(item, "text", ""))
-            lines.append(f"{num_str}. {item_text}")
+            if item_text.strip():
+                lines.append(f"{num_str}. {item_text}")
         return "\n".join(lines)
     return ""
 
@@ -706,6 +712,8 @@ async def _relay_text_message(text: str, reply_to_id: int | None) -> tuple[bool,
     cur_reply = reply_to_id
 
     for chunk in chunks:
+        if not (chunk or "").strip():
+            continue
         dest_msg_id = None
         if BOT_TOKEN:
             try:
