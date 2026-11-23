@@ -1,9 +1,8 @@
 """
 almond_cave/telegram_relay/relay_bot.py
 ---------------------------------------
-Auto-Relay Telegram News:
-ดักจับข่าวสารจากห้องต้นทางด้วย User Account (ไม่ให้เจ้าของรู้)
-แล้วส่งต่อเข้าห้องเพื่อน/กลุ่มปลายทางผ่าน Telegram Bot อัตโนมัติ (ฟรี 100%)
+Automated Telegram News Sync & Filter Worker:
+Syncs filtered financial news updates from source feed to destination channel.
 Supports: Rich Text / PageBlocks, Photos, Videos, Documents, and Reply Threads.
 """
 
@@ -987,13 +986,13 @@ async def handle_new_message(event):
                 is_parent_channel=is_parent_official,
             )
             if not is_audit_ok:
-                logger.critical(f"🚨 [WATCHDOG AUTO-DELETE] Dest Msg ID {dest_msg_id} ไม่ผ่านเกณฑ์ตรวจสอบหลังส่ง ({audit_fail_reason})! กำลังลบทิ้งจากห้อง 143 ทันที...")
+                logger.critical(f"🚨 [WATCHDOG AUTO-DELETE] Dest Msg ID {dest_msg_id} ไม่ผ่านเกณฑ์ตรวจสอบหลังส่ง ({audit_fail_reason})! กำลังลบทิ้งfrom destination channel...")
                 try:
                     if BOT_TOKEN:
                         del_url = f"https://api.telegram.org/bot{BOT_TOKEN}/deleteMessage"
                         requests.post(del_url, json={"chat_id": DEST_CHAT_ID, "message_id": dest_msg_id}, timeout=10)
                     await client.delete_messages(DEST_CHAT_ID, dest_msg_id)
-                    logger.info(f"🗑️ ลบข้อความ ID {dest_msg_id} ออกจากห้อง 143 สำเร็จเรียบร้อย!")
+                    logger.info(f"🗑️ ลบข้อความ ID {dest_msg_id} removed from destination channel.")
                 except Exception as del_err:
                     logger.error(f"Failed to auto-delete: {del_err}")
                 return
@@ -1004,7 +1003,7 @@ async def handle_new_message(event):
             # 📡 บันทึกชื่อหุ้นที่ถูกเมนชันเข้าเรดาร์เทคนิคอลอัตโนมัติ และบันทึกประวัติข้อความสำหรับ Deduplication
             try:
                 from almond_cave.channel_tracker import record_channel_mentions, record_channel_143_message
-                record_channel_mentions(cleaned_text, source="ข่าวหุ้น 143")
+                record_channel_mentions(cleaned_text, source="destination channel")
                 record_channel_143_message(cleaned_text, msg_id=dest_msg_id)
             except Exception as e:
                 logger.warning(f"Failed to record channel ticker mentions/message: {e}")
@@ -1016,7 +1015,7 @@ async def handle_new_message(event):
 
 
 async def main():
-    logger.info("🚀 กำลังเริ่มต้นระบบดักฟังและส่งต่อข่าว (Telegram News Relay)...")
+    logger.info("🚀 กำลังเริ่มต้นTelegram News Sync Worker...")
     while True:
         try:
             await client.connect()
@@ -1031,7 +1030,7 @@ async def main():
             except Exception:
                 pass
 
-            logger.info(f"👂 กำลังดักฟังห้องต้นทาง: '{source_name}' (ID: {SOURCE_CHAT_ID})")
+            logger.info(f"👂 Listening to configured source feed...")
             logger.info(f"🎯 ปลายทางที่จะส่งต่อ: ID {DEST_CHAT_ID}")
             logger.info("✨ ระบบพร้อมทำงาน 100% รอรับข่าวสารใหม่...")
 
