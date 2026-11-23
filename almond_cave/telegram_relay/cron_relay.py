@@ -32,6 +32,7 @@ from almond_cave.telegram_relay.relay_bot import (
     is_worthy_news_item,
     _send_via_bot_status,
     _relay_text_message,
+    handle_new_message,
 )
 from almond_cave.channel_tracker import record_channel_mentions, record_channel_143_message
 
@@ -73,6 +74,11 @@ async def run_cron_cycle(loop_count: int = 1, interval_sec: int = 60):
     last_src_id = state["last_src_id"]
     msg_map.update(state["msg_map"])
 
+    try:
+        client.remove_event_handler(handle_new_message)
+    except Exception:
+        pass
+
     await client.connect()
     if not await client.is_user_authorized():
         logger.error("❌ Telethon session is not authorized. Check TELEGRAM_STRING_SESSION.")
@@ -84,6 +90,8 @@ async def run_cron_cycle(loop_count: int = 1, interval_sec: int = 60):
     total_relayed = 0
 
     for iteration in range(max(1, loop_count)):
+        if not client.is_connected():
+            await client.connect()
         # Fetch recent DEST messages for deduplication against local real-time relay
         dest_texts = []
         async for dm in client.iter_messages(DEST_CHAT_ID, limit=60):
