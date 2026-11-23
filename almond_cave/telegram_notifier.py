@@ -249,8 +249,8 @@ def send_scout_brief(
 
     If photo_path_or_url is provided, sends as a rich photo with caption.
     If comment_text is provided, it is posted as a reply/comment under
-    the primary brief message, matching the 'สไตล์เพจจาง' format.
-    If post_to_channel is True, also cross-posts to TELEGRAM_CHANNEL_ID (ข่าวหุ้น 143).
+    the primary brief message, matching the 'Structured Financial Brief' format.
+    If post_to_channel is True, also cross-posts to TELEGRAM_CHANNEL_ID (destination channel).
     During 01:00 - 07:00 AM Bangkok time, all messages are delivered silently without sound.
 
     :param message: Primary brief headline & structural takeaway
@@ -286,9 +286,9 @@ def send_scout_brief(
             comment_res = send_message(text=comment_text, chat_id=user_target, reply_to_message_id=main_msg_id, bot_token=token, disable_notification=disable_notification)
             result["comment"] = comment_res
 
-    # 📢 Cross-post to Channel (ข่าวหุ้น 143) if Grade A+ Catalyst
+    # 📢 Cross-post to Channel (destination channel) if Grade A+ Catalyst
     if post_to_channel and env_channel_id:
-        logger.info(f"📢 Major Catalyst detected! Cross-posting to Channel {env_channel_id} (ข่าวหุ้น 143)...")
+        logger.info(f"📢 Major Catalyst detected! Cross-posting to Channel {env_channel_id} (destination channel)...")
         if photo_path_or_url:
             chan_primary = send_photo(photo=photo_path_or_url, caption=message, chat_id=env_channel_id, bot_token=token, disable_notification=disable_notification)
             if not chan_primary.get("ok"):
