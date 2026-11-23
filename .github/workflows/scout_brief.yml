@@ -2,7 +2,8 @@ name: 📡 Scout Market Intelligence (24/7 Unlimited)
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    # Run every 30 min with offset (more reliable than */15 on GitHub Actions)
+    - cron: '5,35 * * * *'
   workflow_dispatch:
 
 permissions:
