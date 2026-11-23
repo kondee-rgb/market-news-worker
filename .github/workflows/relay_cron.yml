@@ -2,7 +2,7 @@ name: 📡 Market News Relay (24/7 Unlimited)
 
 on:
   schedule:
-    # Run every 30 min (avoids GitHub dropping */5 crons) & poll every 60s for 27 min continuously
+    # Backup 30-min watchdog cron (primary continuity is via self-chaining workflow_dispatch below)
     - cron: '7,37 * * * *'
   workflow_dispatch:
 
@@ -35,6 +35,7 @@ jobs:
           FILTER_RULES_B64: ${{ secrets.FILTER_RULES_B64 }}
         run: python -u almond_cave/telegram_relay/cron_relay.py --loop 27 --interval 60
       - name: Save State
+        if: always()
         run: |
           git config user.name "Market Worker Bot"
           git config user.email "worker@users.noreply.github.com"
@@ -44,3 +45,13 @@ jobs:
             git pull --rebase --autostash origin main || true
             git push
           fi
+      - name: Self-Chain Next 27-Min Run
+        if: success() && env.GH_DISPATCH_TOKEN != ''
+        env:
+          GH_DISPATCH_TOKEN: ${{ secrets.GH_DISPATCH_TOKEN }}
+        run: |
+          curl -sS -X POST \
+            -H "Authorization: token $GH_DISPATCH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/relay_cron.yml/dispatches \
+            -d '{"ref":"main"}' || true
