@@ -828,8 +828,14 @@
   },
   "EU": {
     "first_seen": "2026-11-24T13:12:27.515558",
-    "last_seen": "2026-11-24T16:05:35.465855",
-    "mention_count": 3,
+    "last_seen": "2026-11-24T23:15:15.494993",
+    "mention_count": 4,
+    "source": "channel_143"
+  },
+  "WI": {
+    "first_seen": "2026-11-24T23:15:19.111552",
+    "last_seen": "2026-11-24T23:15:19.111552",
+    "mention_count": 1,
     "source": "channel_143"
   }
 }
