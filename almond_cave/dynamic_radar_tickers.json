@@ -156,8 +156,8 @@
   },
   "NVDA": {
     "first_seen": "2026-11-03T01:16:07.592051",
-    "last_seen": "2026-11-24T11:11:30.627717",
-    "mention_count": 60,
+    "last_seen": "2026-11-24T13:24:47.043762",
+    "mention_count": 61,
     "source": "ข่าวหุ้น 143"
   },
   "META": {
@@ -684,8 +684,8 @@
   },
   "USTR": {
     "first_seen": "2026-11-22T17:23:58.247238",
-    "last_seen": "2026-11-22T17:24:01.358335",
-    "mention_count": 2,
+    "last_seen": "2026-11-24T13:12:27.515558",
+    "mention_count": 3,
     "source": "ข่าวหุ้น 143"
   },
   "ZTS": {
@@ -823,6 +823,12 @@
   "GFC": {
     "first_seen": "2026-11-24T09:42:26.877425",
     "last_seen": "2026-11-24T09:42:26.877425",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "EU": {
+    "first_seen": "2026-11-24T13:12:27.515558",
+    "last_seen": "2026-11-24T13:12:27.515558",
     "mention_count": 1,
     "source": "channel_143"
   }
