@@ -156,8 +156,8 @@
   },
   "NVDA": {
     "first_seen": "2026-11-03T01:16:07.592051",
-    "last_seen": "2026-11-25T05:40:30.399472",
-    "mention_count": 65,
+    "last_seen": "2026-11-25T07:54:28.772169",
+    "mention_count": 66,
     "source": "ข่าวหุ้น 143"
   },
   "META": {
@@ -913,6 +913,12 @@
   "MMF": {
     "first_seen": "2026-11-25T05:40:36.009713",
     "last_seen": "2026-11-25T05:40:36.009713",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "PBOC": {
+    "first_seen": "2026-11-25T07:54:30.765235",
+    "last_seen": "2026-11-25T07:54:30.765235",
     "mention_count": 1,
     "source": "channel_143"
   }
