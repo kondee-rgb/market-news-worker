@@ -15,8 +15,8 @@
     "source": "ข่าวหุ้น 143"
   },
   "MRVL": {
-    "mention_count": 14,
-    "last_seen": "2026-11-19T15:23:37.833811",
+    "mention_count": 15,
+    "last_seen": "2026-11-25T05:40:23.410295",
     "source": "ข่าวหุ้น 143"
   },
   "ARM": {
@@ -80,8 +80,8 @@
     "source": "ข่าวหุ้น 143"
   },
   "INTC": {
-    "mention_count": 6,
-    "last_seen": "2026-11-19T15:23:37.833811",
+    "mention_count": 7,
+    "last_seen": "2026-11-25T05:40:23.410295",
     "source": "ข่าวหุ้น 143"
   },
   "WULF": {
@@ -132,8 +132,8 @@
   },
   "AMD": {
     "first_seen": "2026-11-03T01:16:07.583541",
-    "last_seen": "2026-11-22T17:22:13.705560",
-    "mention_count": 27,
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 28,
     "source": "ข่าวหุ้น 143"
   },
   "PLTR": {
@@ -156,8 +156,8 @@
   },
   "NVDA": {
     "first_seen": "2026-11-03T01:16:07.592051",
-    "last_seen": "2026-11-24T13:24:47.043762",
-    "mention_count": 61,
+    "last_seen": "2026-11-25T05:40:30.399472",
+    "mention_count": 65,
     "source": "ข่าวหุ้น 143"
   },
   "META": {
@@ -168,8 +168,8 @@
   },
   "AAPL": {
     "first_seen": "2026-11-03T01:16:07.592051",
-    "last_seen": "2026-11-22T17:21:29.451159",
-    "mention_count": 22,
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 23,
     "source": "ข่าวหุ้น 143"
   },
   "TSLA": {
@@ -300,8 +300,8 @@
   },
   "MU": {
     "first_seen": "2026-11-05T17:44:42.563290",
-    "last_seen": "2026-11-23T01:23:40.300617",
-    "mention_count": 9,
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 11,
     "source": "ข่าวหุ้น 143"
   },
   "ENPH": {
@@ -312,8 +312,8 @@
   },
   "AMGN": {
     "first_seen": "2026-11-05T17:44:42.595825",
-    "last_seen": "2026-11-05T17:44:42.595825",
-    "mention_count": 1,
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 2,
     "source": "ข่าวหุ้น 143"
   },
   "VRT": {
@@ -378,8 +378,8 @@
   },
   "SPCX": {
     "first_seen": "2026-11-05T17:44:42.595825",
-    "last_seen": "2026-11-24T08:01:54.650106",
-    "mention_count": 9,
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 10,
     "source": "ข่าวหุ้น 143"
   },
   "SWKS": {
@@ -402,8 +402,8 @@
   },
   "AVGO": {
     "first_seen": "2026-11-14T03:42:48.748957",
-    "last_seen": "2026-11-22T17:24:33.247801",
-    "mention_count": 6,
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 7,
     "source": "ข่าวหุ้น 143"
   },
   "ECB": {
@@ -516,8 +516,8 @@
   },
   "HUM": {
     "first_seen": "2026-11-19T15:23:37.833811",
-    "last_seen": "2026-11-22T17:22:16.878068",
-    "mention_count": 2,
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 3,
     "source": "ข่าวหุ้น 143"
   },
   "MOH": {
@@ -648,8 +648,8 @@
   },
   "NFP": {
     "first_seen": "2026-11-22T17:23:14.997836",
-    "last_seen": "2026-11-22T17:23:14.997836",
-    "mention_count": 1,
+    "last_seen": "2026-11-25T05:40:10.398261",
+    "mention_count": 2,
     "source": "ข่าวหุ้น 143"
   },
   "YTM": {
@@ -732,8 +732,8 @@
   },
   "DELL": {
     "first_seen": "2026-11-22T17:26:23.144494",
-    "last_seen": "2026-11-24T09:34:04.790038",
-    "mention_count": 7,
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 8,
     "source": "ข่าวหุ้น 143"
   },
   "KSS": {
@@ -756,8 +756,8 @@
   },
   "HPE": {
     "first_seen": "2026-11-22T17:26:29.610251",
-    "last_seen": "2026-11-23T01:23:40.300617",
-    "mention_count": 3,
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 4,
     "source": "ข่าวหุ้น 143"
   },
   "HPQ": {
@@ -786,8 +786,8 @@
   },
   "ADI": {
     "first_seen": "2026-11-22T17:26:29.610251",
-    "last_seen": "2026-11-24T09:34:04.790038",
-    "mention_count": 3,
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 4,
     "source": "ข่าวหุ้น 143"
   },
   "BBY": {
@@ -810,8 +810,8 @@
   },
   "SKHY": {
     "first_seen": "2026-11-23T01:23:40.300617",
-    "last_seen": "2026-11-23T01:23:40.300617",
-    "mention_count": 1,
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 2,
     "source": "ข่าวหุ้น 143"
   },
   "LFL": {
@@ -835,6 +835,84 @@
   "WI": {
     "first_seen": "2026-11-24T23:15:19.111552",
     "last_seen": "2026-11-24T23:15:19.111552",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "COGT": {
+    "first_seen": "2026-11-25T05:40:19.079140",
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 2,
+    "source": "channel_143"
+  },
+  "SNY": {
+    "first_seen": "2026-11-25T05:40:19.079140",
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 2,
+    "source": "channel_143"
+  },
+  "DRAM": {
+    "first_seen": "2026-11-25T05:40:23.410295",
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "SOXX": {
+    "first_seen": "2026-11-25T05:40:23.410295",
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "SHLS": {
+    "first_seen": "2026-11-25T05:40:23.410295",
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "ARRY": {
+    "first_seen": "2026-11-25T05:40:23.410295",
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "GM": {
+    "first_seen": "2026-11-25T05:40:23.410295",
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "NKE": {
+    "first_seen": "2026-11-25T05:40:23.410295",
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "INSM": {
+    "first_seen": "2026-11-25T05:40:23.410295",
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "AAOI": {
+    "first_seen": "2026-11-25T05:40:23.410295",
+    "last_seen": "2026-11-25T05:40:23.410295",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "AUD": {
+    "first_seen": "2026-11-25T05:40:30.399472",
+    "last_seen": "2026-11-25T05:40:30.399472",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "NOK": {
+    "first_seen": "2026-11-25T05:40:30.399472",
+    "last_seen": "2026-11-25T05:40:30.399472",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "MMF": {
+    "first_seen": "2026-11-25T05:40:36.009713",
+    "last_seen": "2026-11-25T05:40:36.009713",
     "mention_count": 1,
     "source": "channel_143"
   }
