@@ -156,8 +156,8 @@
   },
   "NVDA": {
     "first_seen": "2026-11-03T01:16:07.592051",
-    "last_seen": "2026-11-25T09:12:22.100217",
-    "mention_count": 70,
+    "last_seen": "2026-11-25T09:45:10.219273",
+    "mention_count": 71,
     "source": "ข่าวหุ้น 143"
   },
   "META": {
@@ -222,8 +222,8 @@
   },
   "TMUS": {
     "first_seen": "2026-11-03T01:16:07.693617",
-    "last_seen": "2026-11-03T01:52:18.617837",
-    "mention_count": 5,
+    "last_seen": "2026-11-25T09:48:15.271247",
+    "mention_count": 6,
     "source": "ข่าวหุ้น 143"
   },
   "TSEM": {
@@ -504,8 +504,8 @@
   },
   "NEM": {
     "first_seen": "2026-11-19T15:23:37.833811",
-    "last_seen": "2026-11-19T15:23:37.833811",
-    "mention_count": 1,
+    "last_seen": "2026-11-25T09:48:15.271247",
+    "mention_count": 2,
     "source": "ข่าวหุ้น 143"
   },
   "XOM": {
@@ -798,8 +798,8 @@
   },
   "DE": {
     "first_seen": "2026-11-22T17:26:29.610251",
-    "last_seen": "2026-11-22T22:02:25.250428",
-    "mention_count": 2,
+    "last_seen": "2026-11-25T09:48:15.271247",
+    "mention_count": 3,
     "source": "ข่าวหุ้น 143"
   },
   "ADSK": {
@@ -925,6 +925,12 @@
   "CIO": {
     "first_seen": "2026-11-25T09:42:42.286255",
     "last_seen": "2026-11-25T09:42:42.286255",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "SPGI": {
+    "first_seen": "2026-11-25T09:48:15.271247",
+    "last_seen": "2026-11-25T09:48:15.271247",
     "mention_count": 1,
     "source": "channel_143"
   }
