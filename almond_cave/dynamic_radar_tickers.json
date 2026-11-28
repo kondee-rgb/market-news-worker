@@ -1221,5 +1221,35 @@
     "last_seen": "2026-11-28T02:56:17.972995",
     "mention_count": 1,
     "source": "channel_143"
+  },
+  "FCNCA": {
+    "first_seen": "2026-11-28T11:55:54.687717",
+    "last_seen": "2026-11-28T11:56:58.670958",
+    "mention_count": 2,
+    "source": "channel_143"
+  },
+  "KRE": {
+    "first_seen": "2026-11-28T11:56:58.670958",
+    "last_seen": "2026-11-28T11:56:58.670958",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "FDIC": {
+    "first_seen": "2026-11-28T11:56:58.670958",
+    "last_seen": "2026-11-28T11:56:58.670958",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "SVB": {
+    "first_seen": "2026-11-28T11:56:58.670958",
+    "last_seen": "2026-11-28T11:56:58.670958",
+    "mention_count": 1,
+    "source": "channel_143"
+  },
+  "OCC": {
+    "first_seen": "2026-11-28T11:56:58.670958",
+    "last_seen": "2026-11-28T11:56:58.670958",
+    "mention_count": 1,
+    "source": "channel_143"
   }
 }
